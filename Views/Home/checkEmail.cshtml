@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "checkEmail";
+}
+
+<h1>checkEmail</h1>
+<div>
+    <label>姓名:</label>
+    <input type="text" placeholder="username" id="txtName" />
+    <br />
+</div>
+<div>
+    <label id="lbName"></label>
+</div>
+<div>
+    <label>信箱:</label>
+    <input type="text" placeholder="email" id="txtEmail" />
+    <br />
+</div>
+<div>
+    <label id="lbEmail"></label>
+</div>
+<div>
+    <label>年齡:</label>
+    <input type="text" placeholder="Age" id="txtAge" />
+    <br />
+</div>
+<div>
+    <label id="lbAge"></label>
+</div>
+<div>
+    <input type="button" value="註冊" id="button1" />
+</div>
+
+@section Scripts{
+    <script>
+        const btn = document.querySelector("#button1");
+        const txtName = document.querySelector("#txtName");
+        const txtEmail = document.querySelector("#txtEmail");
+        const txtAge = document.querySelector("#txtAge");
+        const lbName = document.querySelector("#lbName");
+        const lbEmail = document.querySelector("#lbEmail");
+        const lbAge = document.querySelector("#lbAge");
+
+        const xhr = new XMLHttpRequest();
+
+        txtEmail.addEventListener("blur", () => {
+            xhr.open("GET", `/api/cEmail?email=${txtEmail.value}`);
+            xhr.send();
+
+            xhr.addEventListener("load", () => {
+                //接收結果顯示在div中
+                lbEmail.innerHTML = xhr.responseText;
+            })
+        })
+
+    </script>
+}

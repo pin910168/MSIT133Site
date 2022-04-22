@@ -14,16 +14,65 @@
     <h1>Github</h1>
     <input type="button" value="click" id="button1" />
     <div id="div1"></div>
+    <div>
+        <table>
+
+        </table>
+    </div>
 </div>
 
 
 @section Scripts{
     <script>
-        //const btn = document.querySelector("#button1");
-        //const myDiv = document.querySelector("#div1");
-        //btn.addEventListener("click", () => { myDiv.innerHTML = "<h2>Hello JavaScript!!!</h2>" });
-        $("#button1").click(() => {
-            $("#div1").html("<h2>Hello JQuery!!!</h2>");
+        const btn = document.querySelector("#button1");
+        const myDiv = document.querySelector("#div1");
+        //btn.addEventListener("click", () => {
+        //    /*myDiv.innerHTML = "<h2>Hello JavaScript!!!</h2>"*/
+        //    var emps = [{ "name": "Tom", "workYears": 3, "salary": 35000 },
+        //    { "name": "Jack", "workYears": 5, "salary": 40000 },
+        //        { "name": "Mary", "workYears": 7, "salary": 45000 }];
+        //    for (let i = 0, max = emps.length; i < max; i++) {
+        //        console.log(emps[i].name);
+        //        console.log(emps[i].workYears);
+        //        console.log(emps[i].salary);
+        //    }
+        //});
+        
+        //btn.addEventListener("click", () => {
+        //var emp = {
+        //    "employees": [
+
+        //        { "name": "Tom", "workYears": 3, "salary": 35000 },
+        //        { "name": "Jack", "workYears": 5, "salary": 40000 },
+        //        { "name": "Mary", "workYears": 7, "salary": 45000 }
+        //    ]
+        //};
+        //for (let i = 0, max = emp.length; i < max; i++) {
+        //        console.log(emp.employees[i].name);
+        //        console.log(emp.employees[i].workYears);
+        //        console.log(emp.employees[i].salary);
+        //    }
+        //});
+       
+        var emp = {
+            "employees": [
+
+                { "name": "Tom", "workYears": 3, "salary": 35000 },
+                { "name": "Jack", "workYears": 5, "salary": 40000 },
+                { "name": "Mary", "workYears": 7, "salary": 45000 }
+            ]
+        };
+
+        $("#button1").click(() => {            
+            //$.each(emp, function (index, value) {              
+                
+                let s = "";
+                $.each(emp.employees, function (index, value) {
+                    s += `<tr><td>${value.name}</td><td>${value.workYears}</td><td>${value.salary}</td></tr>`;
+                })
+                $("table").append(s);
+            //})
         })
+            
     </script>
 }
